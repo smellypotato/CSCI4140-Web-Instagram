@@ -18,7 +18,7 @@ hit_counter_file = open(hit_count_path, 'w')
 hit_counter_file.write(str(hit_count))
 hit_counter_file.close()
 
-header = "Content-type: text/html\r\n\r\n"
+header = "Content-type: text/html\n\n"
 
 
 date_string = time.strftime('%A, %B %d, %Y at %I:%M:%S %p %Z')
@@ -32,7 +32,7 @@ html = """
 </head>
 <body>
   <p>
-  lol Date: {0}
+  Date: {0}
   </p>
   <p>
   Hit count: {1}
