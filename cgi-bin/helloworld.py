@@ -2,8 +2,12 @@ import cgi
 import cgitb
 import time
 import os
+cgitb.enable()
 
 header = "Content-type: text/html\r\n\r\n"
+
+
+date_string = time.strftime('%A, %B %d, %Y at %I:%M:%S %p %Z')
 
 html = """
 <!DOCTYPE html>
@@ -14,9 +18,8 @@ html = """
 </head>
 <body>
   <h2>Hello World!</h2>
-  <p>Finally can see you!</p>
+  <p>Fianlly see you!</p>
 </body>
 </html>
 """
-
 print header + html
