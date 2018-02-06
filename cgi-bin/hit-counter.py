@@ -32,7 +32,7 @@ html = """
 </head>
 <body>
   <p>
-  Date: {0}
+  lol Date: {0}
   </p>
   <p>
   Hit count: {1}
