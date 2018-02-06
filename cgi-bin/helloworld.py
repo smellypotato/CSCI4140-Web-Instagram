@@ -3,7 +3,7 @@ import cgitb
 import time
 import os
 
-header = "Content-type: text/html\n\n"
+header = "Content-type: text/html\r\n\r\n"
 
 html = """
 <!DOCTYPE html>
