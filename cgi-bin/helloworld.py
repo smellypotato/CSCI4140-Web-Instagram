@@ -1,13 +1,12 @@
+#! /usr/bin/env python
+
 import cgi
 import cgitb
 import time
 import os
 cgitb.enable()
 
-header = "Content-type: text/html\r\n\r\n"
-
-
-date_string = time.strftime('%A, %B %d, %Y at %I:%M:%S %p %Z')
+header = "Content-type: text/html\n\n"
 
 html = """
 <!DOCTYPE html>
