@@ -6,7 +6,7 @@ import Cookie
 import sqlite3
 conn = sqlite3.connect('account.db')
 cursor = conn.cursor()
-conn.execute("UPDATE account SET cookies = null, cookieexpire = null WHERE cookies != null")
+conn.execute("UPDATE account SET cookies = null, cookieexpire = null WHERE cookies IS NOT null")
 conn.commit()
 
 cookie = Cookie.SimpleCookie()
