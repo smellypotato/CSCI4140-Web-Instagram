@@ -11,7 +11,7 @@ form = cgi.FieldStorage()
 img = form.getvalue("imgname")
 owner = form.getvalue("owner")
 conn = sqlite3.connect('image.db')
-conn.execute("INSERT INTO image VALUES(?,?)",(img, owner))
+conn.execute("INSERT INTO image(name ,owner) VALUES(?, ?)",(img, owner))
 conn.commit()
 
 print 'Content-Type: text/html'
@@ -22,7 +22,7 @@ print '<title>Web Instagram</title>'
 print '</head>'
 print '<body>'
 print '<p>', img, owner,'</p>'
-cursor = conn.execute("SELECT * FROM image")
+cursor = conn.execute("SELECT * FROM image ORDER BY uploadtime DESC")
 for row in cursor:
     print '<p>name: ',row[0],'</p>'
     print '<p>owner: ',row[1],'</p>'

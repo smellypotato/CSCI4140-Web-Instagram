@@ -18,7 +18,7 @@ cursor = conn.execute('''DROP TABLE IF EXISTS image''')
 cursor = conn.execute('''
 CREATE TABLE image(
 name TEXT PRIMARY KEY,
-owner TEXT
+owner TEXT,
 uploadtime DATETIME DEFAULT CURRENT_TIMESTAMP);'''
 )
 conn.close()

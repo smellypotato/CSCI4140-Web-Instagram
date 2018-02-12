@@ -49,27 +49,34 @@ if fileitem.filename:
         os.remove(output)
 else:
     uploaded = False
+    url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
 print 'Content-Type: text/html'
 print
 print '<html>'
 print '<head>'
 print '<title>Web Instagram</title>'
+if not uploaded:
+    print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>Uploading image......</p>'
+if not uploaded:
+    print '<p>Upload fail! Returning to main page......</p>'
+
+else:
+    print '<p>Uploading image......</p>'
 #show the image here
 #print '<img src="%s">'%output
 #confirm button and go to editor.py here
-print '<form action ="editor.py" method = "post">'
-print '<input type = "hidden" value = "%s" name = "imgname">'%output
-print '<input type = "hidden" value = "%s" name = "owner">'%owner
-print '<input type = "submit" value = "Apply Filter">'
-print '</form>'
+    print '<form action ="editor.py" method = "post">'
+    print '<input type = "hidden" value = "%s" name = "imgname">'%output
+    print '<input type = "hidden" value = "%s" name = "owner">'%owner
+    print '<input type = "submit" value = "Apply Filter">'
+    print '</form>'
 
-#cancel upload
-print '<form action ="cancelupload.py" method = "post">'
-print '<input type = "hidden" value = "%s" name = "imgname">'%output
-print '<input type = "submit" value = "back">'
-print '</form>'
+    #cancel upload
+    print '<form action ="cancelupload.py" method = "post">'
+    print '<input type = "hidden" value = "%s" name = "imgname">'%output
+    print '<input type = "submit" value = "back">'
+    print '</form>'
 print '</body>'
 print '</html>'
