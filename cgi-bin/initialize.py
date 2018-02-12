@@ -11,6 +11,17 @@ password TEXT,
 cookies TEXT,
 cookieexpire TEXT);'''
 )
+conn.close()
+
+conn=sqlite3.connect('image.db')
+cursor = conn.execute('''DROP TABLE IF EXISTS image''')
+cursor = conn.execute('''
+CREATE TABLE image(
+name TEXT PRIMARY KEY,
+owner TEXT
+uploadtime DATETIME DEFAULT CURRENT_TIMESTAMP);'''
+)
+conn.close()
 url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
 print 'Content-type:text/html'
 print
@@ -23,4 +34,3 @@ print '<body>'
 print '<p>Initialised! Returning to main page......</p>'
 print '</body>'
 print '</html>'''
-conn.close()

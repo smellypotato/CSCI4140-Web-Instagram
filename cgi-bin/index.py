@@ -30,6 +30,8 @@ if login:
         print None
 else:
     print cookie.output
+
+#use bootstrap to show image
 print "<!DOCTYPE>"
 print ""
 print '<html>'
