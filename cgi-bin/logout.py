@@ -20,7 +20,7 @@ print
 print '<html>'
 print '<head>'
 print '<title>Web Instagram</title>'
-print '<META HTTP-EQUIV="Refresh" CONTENT="2;URL=%s">'%url
+print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
 print '<p>Logging Out......</p>'

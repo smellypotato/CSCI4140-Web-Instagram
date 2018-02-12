@@ -42,18 +42,24 @@ if fileitem.filename:
                 os.makedirs(directory)
             privateoutput = os.path.join(directory,fn)
             os.rename(output, privateoutput)
-            
+
     else:
         os.remove(output)
 else:
     uploaded = False
 if uploaded:
-    message = 'The file "' + fn + '" was uploaded successfully'
+    message = 'The file ' + fn + ' was uploaded to ' + mode +' directory successfully!'
 else:
-    message = 'No file was uploaded'
-print """\
-Content-Type: text/html\n
-<html><body>
-<p>%s</p>
-</body></html>
-""" % (message,)
+    message = 'No file was uploaded!'
+    
+url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+print 'Content-Type: text/html\n
+print '<html>'
+print '<head>'
+print '<title>Web Instagram</title>'
+print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
+print '</head>'
+print '<body>'
+print '<p>'+message+'</p>'
+print '</body>'
+print '</html>'

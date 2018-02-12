@@ -39,7 +39,6 @@ print '</head>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
-print 'also,',httpcookie
 if login:
     print '<p>Account Management</p>'
     print '<form action= "updateaccount.py" method = "post">'
