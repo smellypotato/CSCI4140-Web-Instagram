@@ -53,7 +53,10 @@ if login:
     print '<p>Upload Photo</p>'
     print '<form enctype="multipart/form-data" action= "upload.py" method="post">'
     print '<p>File: <input type="file" name="file" accept="image/gif, image/jpeg, image/png"></p>'
-    print '<p><input type="radio" name="mode" value = "public" checked>public <input type="radio" name="mode" value = "private">private</p>'
+    print '<p>'
+    print '<input type="radio" name="mode" value = "public" checked>public'
+    print '<input type="radio" name="mode" value = "private">private'
+    print '</p>'
     print '<p><input type="submit" value="Upload Photo"></p>'
     print '</form>'
 else:

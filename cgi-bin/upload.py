@@ -21,6 +21,8 @@ mode = form.getvalue("mode")
 fn = ""
 #if file is uploaded
 if fileitem.filename:
+    if not os.path.exists('upload'):
+        os.makedirs('upload')
     #strip leading path from filename to avoid directory based attacks
     name, ext =os.path.splitext(os.path.basename(fileitem.filename))
     fn = datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S")+ext
@@ -65,7 +67,7 @@ if not uploaded:
 else:
     print '<p>Uploading image......</p>'
 #show the image here
-#print '<img src="%s">'%output
+    #print '<img src="%s">'%os.path.join(os.getcwd(),output)
 #confirm button and go to editor.py here
     print '<form action ="editor.py" method = "post">'
     print '<input type = "hidden" value = "%s" name = "imgname">'%output

@@ -1,18 +1,30 @@
 #!/usr/bin/env python
 import cgi, os
 import cgitb;
-import PythonMagick as pm
 import imghdr
 import sqlite3
 import datetime
 cgitb.enable()
 form = cgi.FieldStorage()
 
-img = form.getvalue("imgname")
+imgname = form.getvalue("imgname")
 owner = form.getvalue("owner")
 conn = sqlite3.connect('image.db')
-conn.execute("INSERT INTO image(name ,owner) VALUES(?, ?)",(img, owner))
-conn.commit()
+#conn.execute("INSERT INTO image(name ,owner) VALUES(?, ?)",(img, owner))
+#conn.commit()
+#conn.close()
+imgdir = os.path.dirname(imgname)
+outputdir = os.path.join(imgdir,"filter")
+filteroutput =os.path.join(outputdir,os.path.basename(imgname))
+if (os.path.isfile(filteroutput)):
+    img = filteroutput
+else:
+    img = imgname
+displayimg = os.path.join('..',img)
+
+undo = ""
+if not os.path.isfile(imgname):
+    undo = "disabled"
 
 print 'Content-Type: text/html'
 print
@@ -21,7 +33,30 @@ print '<head>'
 print '<title>Web Instagram</title>'
 print '</head>'
 print '<body>'
-print '<p>', img, owner,'</p>'
+print '<h2>Editor</h2>'
+print '<img src = %s>'%displayimg
+
+print '<form action ="filter.py" method = "post">'
+print '<p>'
+print '<input type="radio" name="filter" value = "none" checked>Original'
+print '<input type="radio" name="filter" value = "border">Border'
+print '<input type="radio" name="filter" value = "lomo">Lomo'
+print '<input type="radio" name="filter" value = "lensflare">Lens Flare'
+print '<input type="radio" name="filter" value = "blackwhite">Black & White'
+print '<input type="radio" name="filter" value = "blur">Blur'
+print '</p>'
+print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
+print '<input type = "hidden" value = "%s" name = "owner">'%owner
+print '<input type = "submit" value = "Apply Filter">'
+print '</form>'
+
+print '<form action ="undo.py" method = "post">'
+print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
+print '<input type = "hidden" value = "%s" name = "owner">'%owner
+print '<input type = "submit" value = "Undo" ' + undo +'>'
+print '</form>'
+
+#debug
 cursor = conn.execute("SELECT * FROM image ORDER BY uploadtime DESC")
 for row in cursor:
     print '<p>name: ',row[0],'</p>'
