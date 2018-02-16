@@ -18,5 +18,9 @@ Password: <input type="password" name="password"></ br>
 Retype Password: <input type="password" name="repassword"></>
 <input type = "submit" value = "submit">
 </form>
+<br>
+<form action ="index.py">
+<input type = "submit" value = "back">
+</form>
 </body>
 </html>'''

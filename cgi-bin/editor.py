@@ -23,7 +23,7 @@ else:
 displayimg = os.path.join('..',img)
 
 undo = ""
-if not os.path.isfile(imgname):
+if not os.path.isfile(imgname) or not os.path.isfile(filteroutput):
     undo = "disabled"
 
 print 'Content-Type: text/html'
@@ -40,7 +40,7 @@ print '<form action ="filter.py" method = "post">'
 print '<p>'
 print '<input type="radio" name="filter" value = "none" checked>Original'
 print '<input type="radio" name="filter" value = "border">Border'
-print '<input type="radio" name="filter" value = "lomo">Lomo'
+#print '<input type="radio" name="filter" value = "lomo">Lomo'
 print '<input type="radio" name="filter" value = "lensflare">Lens Flare'
 print '<input type="radio" name="filter" value = "blackwhite">Black & White'
 print '<input type="radio" name="filter" value = "blur">Blur'
@@ -54,6 +54,18 @@ print '<form action ="undo.py" method = "post">'
 print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
 print '<input type = "hidden" value = "%s" name = "owner">'%owner
 print '<input type = "submit" value = "Undo" ' + undo +'>'
+print '</form>'
+
+print '<form action ="finish.py" method = "post">'
+print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
+print '<input type = "hidden" value = "%s" name = "owner">'%owner
+print '<input type = "submit" value = "Finish" >'
+print '</form>'
+
+print '<form action ="discard.py" method = "post">'
+print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
+print '<input type = "hidden" value = "%s" name = "owner">'%owner
+print '<input type = "submit" value = "Discard" >'
 print '</form>'
 
 #debug

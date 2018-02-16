@@ -11,13 +11,13 @@ imgdir = os.path.dirname(imgname)
 outputdir = os.path.join(imgdir,"filter")
 filterimg =os.path.join(outputdir,os.path.basename(imgname))
 
-#replace filtered image with orginal image
-img = imgname
-os.remove(filterimg)
-os.rename(img, filterimg)
+#remove related image
+if os.path.isfile(filterimg):
+    os.remove(filterimg)
+if os.path.isfile(imgname):
+    os.remove(imgname)
 
-url = '/cgi-bin/editor.py?imgname='+imgname+'&owner='+owner
-
+url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
 print 'Content-Type: text/html'
 print
 print '<html>'
@@ -26,12 +26,7 @@ print '<title>Web Instagram</title>'
 print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>Undo......</p>'
-#print '<img src = %s>'%displayimg
-print '<form action ="editor.py" method = "post">'
-print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
-print '<input type = "hidden" value = "%s" name = "owner">'%owner
-print '<input type = "submit" value = "Apply Filter">'
+print '<p>Discarding Image......</p>'
 print '</form>'
 print '</body>'
 print '</html>'

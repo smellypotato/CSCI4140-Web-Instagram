@@ -30,7 +30,7 @@ if login:
         print None
 else:
     print cookie.output
-
+conn.close()
 #use bootstrap to show image
 print "<!DOCTYPE>"
 print ""
@@ -72,5 +72,16 @@ print '</form>'
 print '<form action= "/cgi-bin/showdb.py" method = "post">'
 print '<button>Show DB</button>'
 print '</form>'
+conn = sqlite3.connect("image.db")
+cursor = conn.execute("SELECT * FROM image WHERE owner = 'public' OR owner = ? ORDER BY uploadtime DESC", (user,))
+for row in cursor:
+    if (row[1] == "public"):
+        permalink = os.path.join('..','upload','thumbnail',row[0])
+        original = os.path.join('..','upload',row[0])
+    else:
+        permalink = os.path.join('..','upload',row[1],'thumbnail',row[0])
+        original = os.path.join('..','upload',row[1],row[0])
+    print '<a target = "_blank" href = "%s"><img src = %s></a>'%(original,permalink)
 print '</body>'
 print '</html>'
+conn.close()

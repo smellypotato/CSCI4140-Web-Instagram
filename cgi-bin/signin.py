@@ -16,5 +16,9 @@ Username: <input type="text" name="username"></ br>
 Password: <input type="password" name="password"></>
 <input type = "submit" value = "submit">
 </form>
+<br>
+<form action ="index.py">
+<input type = "submit" value = "back">
+</form>
 </body>
 </html>'''

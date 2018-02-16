@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 import sqlite3
+import shutil
 
 conn = sqlite3.connect('account.db')
 cursor = conn.execute('''DROP TABLE IF EXISTS account''')
@@ -22,6 +23,9 @@ owner TEXT,
 uploadtime DATETIME DEFAULT CURRENT_TIMESTAMP);'''
 )
 conn.close()
+
+shutil.rmtree('upload')
+
 url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
 print 'Content-type:text/html'
 print

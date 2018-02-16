@@ -16,5 +16,9 @@ New Password: <input type="password" name="newpassword"></ br>
 Retype New Password: <input type="password" name="renewpassword"></>
 <input type = "submit" value = "submit">
 </form>
+<br>
+<form action ="index.py">
+<input type = "submit" value = "back">
+</form>'
 </body>
 </html>'''
