@@ -102,7 +102,7 @@ else:
     currentpage = int(currentpage)
 #page numbers
 #print imgno, pageno, currentpage
-print '<div class="pagination">'
+print '<div class=".pagination">'
 if currentpage != 1:
     print '  <a href="/cgi-bin/index.py?page=%s">&laquo;</a>'%str(currentpage - 1)
 for i in range(1, pageno + 1):
