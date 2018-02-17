@@ -31,7 +31,9 @@ if not fail:
     conn.execute("UPDATE account SET password = ? WHERE username= ? AND password = ?", (newpw, uid, oldpw))
     conn.commit()
 
-url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+#url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+url = "/cgi-bin/index.py"
+
 print 'Content-type:text/html'
 print
 print '<html>'

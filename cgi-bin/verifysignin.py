@@ -31,7 +31,8 @@ if count == 1:
     cookiesession = cookiesession.replace(" ","")
     conn.execute("UPDATE account SET cookies = ?, cookieexpire = ? WHERE username= ? AND password = ?", (cookiesession, cookieexpire, uid, pw))
     conn.commit()
-url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+#url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+url = "/cgi-bin/index.py"
 
 print 'Content-type:text/html'
 if login:

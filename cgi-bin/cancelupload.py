@@ -7,7 +7,8 @@ form = cgi.FieldStorage()
 img = form.getvalue("imgname")
 os.remove(img)
 
-url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+#url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+url = "/cgi-bin/index.py"
 print 'Content-type:text/html'
 print ''
 print '<html>'

@@ -8,7 +8,8 @@ import sqlite3
 import Cookie
 cgitb.enable()
 conn = sqlite3.connect('account.db')
-url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+#url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+url = "/cgi-bin/index.py"
 print 'Content-type:text/html'
 try:
     cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])

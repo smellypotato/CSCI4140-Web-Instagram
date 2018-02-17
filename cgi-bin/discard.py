@@ -18,7 +18,8 @@ if os.path.isfile(filterimg):
 if os.path.isfile(imgname):
     os.remove(imgname)
 
-url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+#url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
+url = "/cgi-bin/index.py"
 print 'Content-Type: text/html'
 print
 print '<html>'
