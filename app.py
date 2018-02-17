@@ -15,7 +15,7 @@ PORT = 8080
 server_class = BaseHTTPServer.HTTPServer
 handler_class = CGIHTTPServer.CGIHTTPRequestHandler
 server_address = ("", PORT)
-handler.cgi_directories = ["/cgi-bin"]
+CGIHTTPServer.CGIHTTPRequestHandler.cgi_directories = ["/cgi-bin"]
 
 httpd = server_class(server_address, handler_class)
 
