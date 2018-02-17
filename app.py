@@ -12,17 +12,11 @@ PORT = 8080
 #TODO: check that port is available,
 # and look for a different one if it isn't.
 
-script_path = "/cgi-bin/redirect.py"
-
 server_class = BaseHTTPServer.HTTPServer
 handler_class = CGIHTTPServer.CGIHTTPRequestHandler
 server_address = ("", PORT)
 
 httpd = server_class(server_address, handler_class)
-
-url = script_path
-
-webbrowser.open_new_tab(url)
 
 print "serving at", url
 
