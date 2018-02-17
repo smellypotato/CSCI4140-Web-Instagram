@@ -38,6 +38,8 @@ elif (filt == "lensflare"):
     image.composite(flare,pm.GravityType.NorthWestGravity,pm.CompositeOperator.ScreenCompositeOp)
 elif (filt == "blackwhite"):
     image.colorSpace(pm.ColorspaceType.GRAYColorspace)
+    if not image.monochrome():
+        image.monochrome(True)
     bw = pm.Image("bwgrad.png")
     geo =str(image.size().width())+'x'+str(image.size().height())+'!'
     bw.resize(geo)
@@ -56,6 +58,7 @@ print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
 print '<p>Applying filter......</p>'
+print '<img src = %s>'%os.path.join('..',output)
 #print '<form action ="editor.py" method = "post">'
 #print '<input type = "hidden" value = "%s" name = "imgname">'%img
 #print '<input type = "hidden" value = "%s" name = "owner">'%owner

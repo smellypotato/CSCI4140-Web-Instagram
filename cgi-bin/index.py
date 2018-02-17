@@ -6,6 +6,7 @@ import time
 import os
 import sqlite3
 import Cookie
+import math
 cookie = ""
 cgitb.enable()
 login = False
@@ -38,6 +39,22 @@ print '<html>'
 print '<head>'
 print '<title>Web Instagram</title>'
 print '</head>'
+print '<style>'
+print '.pagination {'
+print '     display: inline-block;'
+print '}'
+print '.pagination a {'
+print '    color: black;'
+print '    float: left;'
+print '    padding: 8px 16px;'
+print '    text-decoration: none;'
+print '}'
+print '.pagination a.active {'
+print '    background-color: #4CAF50;'
+print '    color: white;'
+print '}'
+print '.pagination a:hover:not(.active) {background-color: #ddd;}'
+print '</style>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
@@ -73,7 +90,33 @@ print '<form action= "/cgi-bin/showdb.py" method = "post">'
 print '<button>Show DB</button>'
 print '</form>'
 conn = sqlite3.connect("image.db")
-cursor = conn.execute("SELECT * FROM image WHERE owner = 'public' OR owner = ? ORDER BY uploadtime DESC", (user,))
+#image db info
+cursor = conn.execute("SELECT count(*) FROM image WHERE owner = 'public' OR owner = ?", (user,))
+imgno = cursor.fetchone()[0]
+pageno = imgno/8 + (imgno % 8 > 0)
+form = cgi.FieldStorage()
+currentpage = form.getvalue("page")
+if currentpage == None:
+    currentpage = 1
+else:
+    currentpage = int(currentpage)
+#page numbers
+#print imgno, pageno, currentpage
+print '<div class="pagination">'
+if currentpage != 1:
+    print '  <a href="/cgi-bin/index.py?page=%s">&laquo;</a>'%str(currentpage - 1)
+for i in range(1, pageno + 1):
+    active = ""
+    if currentpage == i:
+        active = 'class="active" '
+    print '  <a '+active+'href="/cgi-bin/index.py?page='+str(i)+'">'+str(i)+'</a>'
+if currentpage != pageno and pageno != 0:
+    print '  <a href="/cgi-bin/index.py?page=%s">&raquo;</a>'%str(currentpage + 1)
+print '</div>'
+print '<br>'
+offset = (currentpage-1)*8
+#display image
+cursor = conn.execute("SELECT * FROM image WHERE owner = 'public' OR owner = ? ORDER BY uploadtime DESC LIMIT 8 OFFSET ?", (user, offset))
 for row in cursor:
     if (row[1] == "public"):
         permalink = os.path.join('..','upload','thumbnail',row[0])
