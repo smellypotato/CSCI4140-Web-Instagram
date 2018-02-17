@@ -18,6 +18,4 @@ server_address = ("", PORT)
 
 httpd = server_class(server_address, handler_class)
 
-print "serving at", url
-
 httpd.serve_forever()
