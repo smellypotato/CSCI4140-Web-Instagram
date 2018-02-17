@@ -2,9 +2,7 @@
 import cgi
 import cgitb
 
-url = "/cgi-bin/index.py"
 print 'Content-type:text/html'
-
 print
 print '<html>'
 print '<head>'
