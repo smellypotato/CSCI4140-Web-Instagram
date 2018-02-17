@@ -12,7 +12,7 @@ PORT = 8080
 #TODO: check that port is available,
 # and look for a different one if it isn't.
 
-script_path = "~/cgi-bin/test.py"
+script_path = "/cgi-bin/redirect.py"
 
 server_class = BaseHTTPServer.HTTPServer
 handler_class = CGIHTTPServer.CGIHTTPRequestHandler
