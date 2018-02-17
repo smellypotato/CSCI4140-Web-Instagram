@@ -55,3 +55,5 @@ print '<img src = %s>'%imgpath
 print '</form>'
 print '</body>'
 print '</html>'
+
+#executable?

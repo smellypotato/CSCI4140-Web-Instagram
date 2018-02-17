@@ -66,3 +66,5 @@ print '<img src = %s>'%os.path.join('..',output)
 #print '</form>'
 print '</body>'
 print '</html>'
+
+#executable?

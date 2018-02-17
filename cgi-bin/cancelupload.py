@@ -20,3 +20,5 @@ print '<p>Cancelling upload image......</p>'
 print '<p>' + img + '</p>'
 print '</body>'
 print '</html>'
+
+#executable?

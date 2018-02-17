@@ -75,3 +75,5 @@ for row in cursor:
     print '<p>time: ',row[2],'</p>'
 print '</body>'
 print '</html>'
+
+#executable?

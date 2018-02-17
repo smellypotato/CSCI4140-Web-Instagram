@@ -31,3 +31,5 @@ print '<p>Discarding Image......</p>'
 print '</form>'
 print '</body>'
 print '</html>'
+
+#executable?

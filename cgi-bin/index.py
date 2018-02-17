@@ -128,3 +128,5 @@ for row in cursor:
 print '</body>'
 print '</html>'
 conn.close()
+
+#executable?

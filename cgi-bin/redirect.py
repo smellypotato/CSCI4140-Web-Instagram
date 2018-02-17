@@ -25,3 +25,5 @@ print '<body>'
 print '<p>Redirecting......</p>'
 print '</body>'
 print '</html>'
+
+#executable?
