@@ -1,4 +1,11 @@
 #! /usr/bin/env python
+import cgi
+import cgitb
+import time
+import os
+import sqlite3
+import Cookie
+import math
 
 print 'Content-type:text/html'
 print ""
@@ -8,13 +15,7 @@ print '<title>Web Instagram</title>'
 print '</head>'
 print '</html>'
 '''
-import cgi
-import cgitb
-import time
-import os
-import sqlite3
-import Cookie
-import math
+
 cookie = ""
 cgitb.enable()
 login = False
