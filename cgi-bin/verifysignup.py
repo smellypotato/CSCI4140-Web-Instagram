@@ -15,6 +15,10 @@ uid = form.getvalue("username")
 pw = form.getvalue("password")
 repw = form.getvalue("repassword")
 
+fail = False
+conn = sqlite3.connect('account.db')
+
+conn.close()
 
 print 'Content-type:text/html'
 print
@@ -24,7 +28,7 @@ print '<title>Web Instagram</title>'
 #print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>14</p>'
+print '<p>15</p>'
 print '<p>%s %s %s</p>'%(uid,pw,repw)
 print '</body>'
 print '</html>'
@@ -33,13 +37,13 @@ print '</html>'
 
 
 '''
-conn = sqlite3.connect('account.db')
 
 
-fail = False
 
 
-conn.close()
+
+
+
 
 if not fail:
     if pw != repw:
