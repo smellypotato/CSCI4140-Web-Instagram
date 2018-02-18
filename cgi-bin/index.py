@@ -26,6 +26,14 @@ if not login:
     cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
 
 print 'Content-type:text/html'
+if login:
+    try:
+        cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
+        print "session = " + cookie["session"].value
+    #except (Cookie.CookieError, KeyError):
+        #print None
+else:
+    print cookie.output()
 print ""
 print '<html>'
 print '<head>'
@@ -47,7 +55,7 @@ print '    color: white;'
 print '}'
 print '.pagination a:hover:not(.active) {background-color: #ddd;}'
 print '</style>'
-print '<p>5</p>'
+print '<p>6</p>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
@@ -56,14 +64,7 @@ print '</html>'
 '''
 
 
-if login:
-    try:
-        cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
-        print "session = " + cookie["session"].value
-    except (Cookie.CookieError, KeyError):
-        print None
-else:
-    print cookie.output
+
 print ""
 
 if login:
