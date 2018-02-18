@@ -1,5 +1,16 @@
 #! /usr/bin/env python
 
+import cgi
+import cgitb
+cgitb.enable()
+
+print "Content-type:text/html\r\n\r\n"
+print "<html>"
+print "<head>"
+print "<title>Web Instagram</title>"
+print "</head>"
+print "</html>"
+
 '''import cgi
 import cgitb
 import time
