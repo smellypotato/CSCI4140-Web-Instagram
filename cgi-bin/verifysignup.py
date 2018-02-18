@@ -29,7 +29,7 @@ if not fail:
     if count > 0:
         fail = True
 if not fail:
-    expiration = datetime.datetime.now() + datetime.timedelta(minutes=10)
+    expiration = datetime.datetime.now() + datetime.timedelta(days=30)
     cookie = Cookie.SimpleCookie()
     cookie["session"] = random.randint(0,1000000000)
     cookie["session"]["path"] = "/"

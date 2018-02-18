@@ -9,7 +9,6 @@ import Cookie
 import math
 cgitb.enable()
 cookie = ""
-cgitb.enable()
 login = False
 user = "guest"
 conn = sqlite3.connect('account.db')
@@ -20,12 +19,13 @@ row = cursor.fetchone()
 if (row[0] != 0):
     user = row[1]
     login = True
-if not login:
-    cookie = Cookie.SimpleCookie()
-    cookie['session'] = ''
-    cookie["session"]["path"] = "/"
-    cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
-
+'''if not login:
+    try:
+        cookie = Cookie.SimpleCookie()
+        cookie['session'] = ''
+        cookie["session"]["path"] = "/"
+        cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
+'''
 print "Content-type:text/html"
 if login:
     try:
