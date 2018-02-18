@@ -2,7 +2,8 @@
 import cgi, os
 import cgitb
 import sqlite3
-import PythonMagick as pm
+#import PythonMagick as pm
+import shutil
 cgitb.enable()
 form = cgi.FieldStorage()
 
@@ -26,9 +27,11 @@ tnoutputdir = os.path.join(imgdir,"thumbnail")
 if not os.path.exists(tnoutputdir):
     os.makedirs(tnoutputdir)
 tnoutput =os.path.join(tnoutputdir,os.path.basename(img))
-image = pm.Image(img)
-image.resize("200x200")
-image.write(tnoutput)
+#image = pm.Image(img)
+#image.resize("200x200")
+#image.write(tnoutput)
+shutil.copy(img,tnoutput)
+
 
 conn = sqlite3.connect('image.db')
 conn.execute("INSERT INTO image(name ,owner) VALUES(?, ?)",(os.path.basename(img), owner))
@@ -37,7 +40,6 @@ conn.close()
 
 url = '/cgi-bin/index.py'
 
-#permalink = os.path.join('http://localhost:8080',img)
 permalink = img
 print 'Content-Type: text/html'
 print
