@@ -18,7 +18,8 @@ fail = False
 uid = form.getvalue("username")
 pw = form.getvalue("password")
 repw = form.getvalue("repassword")
-
+conn.close()
+'''
 if not fail:
     if pw != repw:
         fail = True
