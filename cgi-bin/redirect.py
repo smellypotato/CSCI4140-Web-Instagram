@@ -8,14 +8,14 @@ cursor = conn.cursor()
 conn.execute("UPDATE account SET cookies = null, cookieexpire = null WHERE cookies IS NOT null")
 conn.commit()
 
-cookie = Cookie.SimpleCookie()
-cookie['session'] = ''
-cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
+#cookie = Cookie.SimpleCookie()
+#cookie['session'] = ''
+#cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
 
 #url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
 url = "/cgi-bin/index.py"
 print 'Content-type:text/html'
-print cookie.output()
+#print cookie.output()
 print
 print '<html>'
 print '<head>'
