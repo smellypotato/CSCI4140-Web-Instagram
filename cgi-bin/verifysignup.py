@@ -7,6 +7,14 @@ import sqlite3
 import Cookie
 import random
 import datetime
+cgitb.enable()
+cookie = ""
+
+form = cgi.FieldStorage()
+uid = form.getvalue("username")
+pw = form.getvalue("password")
+repw = form.getvalue("repassword")
+
 
 print 'Content-type:text/html'
 print
@@ -16,7 +24,8 @@ print '<title>Web Instagram</title>'
 #print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>13</p>'
+print '<p>14</p>'
+print '<p>%s %s %s</p>'%(uid,pw,repw)
 print '</body>'
 print '</html>'
 
@@ -24,17 +33,12 @@ print '</html>'
 
 
 '''
-
-cgitb.enable()
-cookie = ""
 conn = sqlite3.connect('account.db')
-form = cgi.FieldStorage()
+
 
 fail = False
 
-uid = form.getvalue("username")
-pw = form.getvalue("password")
-repw = form.getvalue("repassword")
+
 conn.close()
 
 if not fail:
