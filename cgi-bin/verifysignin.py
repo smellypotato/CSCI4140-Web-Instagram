@@ -22,9 +22,10 @@ count = cursor.fetchone()[0]
 
 if count == 1:
     login = True
-    expiration = datetime.datetime.now() + datetime.timedelta(minutes=10)
+    expiration = datetime.datetime.now() + datetime.timedelta(days=30)
     cookie = Cookie.SimpleCookie()
     cookie["session"] = random.randint(0,1000000000)
+    cookie["session"]["path"] = "/"
     cookie["session"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
     cookiesession,cookieexpire = cookie.output().split(';',1)
     garbage, cookiesession = cookiesession.split(':',1)
@@ -46,9 +47,9 @@ print '</head>'
 print '<body>'
 if login:
     print '<p>Login Success! Redirecting to main page.....</p>'
-    print cookie.output()
 else:
     print '<p>Login Failed! Redirecting to main page.....</p>'
+print '</body>'
 print '</html>'
 
 #executable?
