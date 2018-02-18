@@ -31,7 +31,7 @@ if login:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
         print "Session = " + cookie["session"].value+'\r\n\r\n'
     except (Cookie.CookieError, KeyError):
-        print ,
+        print cookie.output+'\r\n\r\n'
 else:
     print cookie.output+'\r\n\r\n'
 conn.close()
