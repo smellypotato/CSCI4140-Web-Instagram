@@ -34,6 +34,7 @@ if login:
         print None
 else:
     print cookie.output() ,'\r\n'
+print
 conn.close()
 print "<html>"
 print "<head>"
