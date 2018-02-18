@@ -26,7 +26,7 @@ print '<html>'
 print '<head>'
 print '<title>Web Instagram</title>'
 print '</head>'
-print '<body>25.5</body>'
+print '<body>27.5</body>'
 print '</html>'
 '''
 if not login:
