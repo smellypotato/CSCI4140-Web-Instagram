@@ -25,13 +25,13 @@ if not login:
     cookie['session'] = ''
     cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
 
-print "Content-type:text/html"
+print "Content-type:text/html\n"
 if login:
     try:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
-        print "Session = " + cookie["session"].value+'\r\n\r\n'
+        print "session = " + cookie["session"].value+'\r\n\r\n'
     except (Cookie.CookieError, KeyError):
-        print cookie.output+'\r\n\r\n'
+        print None
 else:
     print cookie.output+'\r\n\r\n'
 conn.close()
