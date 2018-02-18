@@ -29,11 +29,11 @@ print "Content-type:text/html\n"
 if login:
     try:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
-        print "session = " + cookie["session"].value+'\r\n\r\n'
+        print "session = " + cookie["session"].value,'\r\n\r\n'
     except (Cookie.CookieError, KeyError):
         print None
 else:
-    print cookie.output+'\r\n\r\n'
+    print cookie.output ,'\r\n\r\n'
 conn.close()
 print "<html>"
 print "<head>"
