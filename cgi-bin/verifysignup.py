@@ -12,7 +12,7 @@ cookie = ""
 
 form = cgi.FieldStorage()
 uid = form.getvalue("username")
-pw = for24getvalue("password")
+pw = form.getvalue("password")
 repw = form.getvalue("repassword")
 
 fail = False
@@ -50,12 +50,21 @@ print '<title>Web Instagram</title>'
 print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>24</p>'
+print '<p>25</p>'
 print '<p>%s</p>'%cookie.output()
 print fail
-if fail:
-    print '<p>Sign up failed! Retype password incorrect/Username already existed!<p>'
-else: print '<p>Sign up success!<p>'
-print '<p>Redirecting to main page.....</p>'
+
 print '</body>'
 print '</html>'
+
+
+
+
+'''
+
+print '<body>'
+
+print '</body>'
+print '</html>'
+
+#executable?'''
