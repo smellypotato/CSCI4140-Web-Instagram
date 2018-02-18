@@ -60,11 +60,6 @@ print '</style>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
-print '</body>'
-print '</html>'
-'''
-
-
 if login:
     print '<p>Account Management</p>'
     print '<form action= "updateaccount.py" method = "post">'
@@ -90,6 +85,13 @@ else:
     print '<form action= "signup.py" method = "post">'
     print '<button>Sign Up</button>'
     print '</form>'
+print '</body>'
+print '</html>'
+'''
+
+
+
+
 print '<form action= "/cgi-bin/initialize.py" method = "post">'
 print '<button>Initialize Account DB</button>'
 print '</form>'
