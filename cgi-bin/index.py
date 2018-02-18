@@ -8,7 +8,7 @@ import sqlite3
 import Cookie
 import math
 cookie = ""
-cgitb.enable()
+c'''gitb.enable()
 login = False
 user = "guest"
 conn = sqlite3.connect('account.db')
@@ -34,7 +34,7 @@ else:
     print cookie.output
 print ""
 conn.close()
-'''
+
 print "<!DOCTYPE>"
 print ""
 print '<html>'
