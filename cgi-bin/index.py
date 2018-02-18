@@ -32,7 +32,7 @@ if login:
 else:
     print cookie.output
 conn.close()
-#use bootstrap to show image
+
 print "<!DOCTYPE>"
 print ""
 print '<html>'
