@@ -14,14 +14,6 @@ login = False
 user = "guest"
 conn = sqlite3.connect('account.db')
 httpcookie = os.environ["HTTP_COOKIE"]
-print "Content-type:text/html\r\n\r\n"
-print "<html>"
-print "<head>"
-print "<title>Web Instagram</title>"
-print "</head>"
-print "</html>"
-
-'''
 
 cursor = conn.execute("SELECT count(*), username FROM account where cookies = ?", (httpcookie,))
 row = cursor.fetchone()
@@ -32,6 +24,16 @@ if not login:
     cookie = Cookie.SimpleCookie()
     cookie['session'] = ''
     cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
+    
+print "Content-type:text/html\r\n\r\n"
+print "<html>"
+print "<head>"
+print "<title>Web Instagram</title>"
+print "</head>"
+print "</html>"
+
+'''
+
 print 'Content-type:text/html'
 if login:
     try:
