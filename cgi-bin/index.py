@@ -30,8 +30,9 @@ if login:
     try:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
         print "session = " + cookie["session"].value
-    #except (Cookie.CookieError, KeyError):
+    except (Cookie.CookieError, KeyError):
         #print None
+        a = 1
 else:
     print cookie.output()
 print ""
@@ -55,7 +56,7 @@ print '    color: white;'
 print '}'
 print '.pagination a:hover:not(.active) {background-color: #ddd;}'
 print '</style>'
-print '<p>6</p>'
+print '<p>7</p>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
