@@ -40,24 +40,6 @@ print "<head>"
 print "<title>Web Instagram</title>"
 print "</head>"
 print "</html>"
-
-'''
-if login:
-    try:
-        cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
-        print "session = " + cookie["session"].value
-    except (Cookie.CookieError, KeyError):
-        print None
-else:
-    print cookie.output
-conn.close()
-
-print "<!DOCTYPE>"
-print ""
-print '<html>'
-print '<head>'
-print '<title>Web Instagram</title>'
-print '</head>'
 print '<style>'
 print '.pagination {'
 print '     display: inline-block;'
@@ -74,6 +56,8 @@ print '    color: white;'
 print '}'
 print '.pagination a:hover:not(.active) {background-color: #ddd;}'
 print '</style>'
+'''
+
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
