@@ -1,4 +1,12 @@
 #! /usr/bin/env python
+import cgi
+import cgitb
+import time
+import os
+import sqlite3
+import Cookie
+import random
+import datetime
 
 print 'Content-type:text/html'
 print
@@ -8,7 +16,7 @@ print '<title>Web Instagram</title>'
 #print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>12</p>'
+print '<p>13</p>'
 print '</body>'
 print '</html>'
 
@@ -16,14 +24,7 @@ print '</html>'
 
 
 '''
-import cgi
-import cgitb
-import time
-import os
-import sqlite3
-import Cookie
-import random
-import datetime
+
 cgitb.enable()
 cookie = ""
 conn = sqlite3.connect('account.db')
