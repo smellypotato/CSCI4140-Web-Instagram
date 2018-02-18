@@ -25,7 +25,7 @@ if not login:
     cookie['session'] = ''
     cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
 
-print "Content-type:text/html\n"
+print "Content-type:text/html"
 if login:
     try:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
@@ -40,7 +40,7 @@ print "<html>"
 print "<head>"
 print "<title>Web Instagram</title>"
 print "</head>"
-print "</html>"
+
 print '<style>'
 print '.pagination {'
 print '     display: inline-block;'
@@ -57,11 +57,14 @@ print '    color: white;'
 print '}'
 print '.pagination a:hover:not(.active) {background-color: #ddd;}'
 print '</style>'
-'''
-
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
+print '</body>'
+print '</html>'
+'''
+
+
 if login:
     print '<p>Account Management</p>'
     print '<form action= "updateaccount.py" method = "post">'
@@ -129,8 +132,7 @@ for row in cursor:
         permalink = os.path.join('..','upload',row[1],'thumbnail',row[0])
         original = os.path.join('..','upload',row[1],row[0])
     print '<a target = "_blank" href = "%s"><img src = %s></a>'%(original,permalink)
-print '</body>'
-print '</html>'
+
 conn.close()
 
 #executable?'''
