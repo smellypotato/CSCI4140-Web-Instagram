@@ -1,7 +1,6 @@
 #! /usr/bin/env python
 
 print 'Content-type:text/html'
-print "<!DOCTYPE>"
 print ""
 print '<html>'
 print '<head>'
