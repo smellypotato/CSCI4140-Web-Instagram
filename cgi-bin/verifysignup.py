@@ -32,6 +32,7 @@ if not fail:
     expiration = datetime.datetime.now() + datetime.timedelta(minutes=10)
     cookie = Cookie.SimpleCookie()
     cookie["session"] = random.randint(0,1000000000)
+    cookie["session"]["path"] = "/"
     cookie["session"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
     cookiesession,cookieexpire = cookie.output().split(';',1)
     garbage, cookiesession = cookiesession.split(':',1)

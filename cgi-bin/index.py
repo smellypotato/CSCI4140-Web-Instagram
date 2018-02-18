@@ -23,6 +23,7 @@ if (row[0] != 0):
 if not login:
     cookie = Cookie.SimpleCookie()
     cookie['session'] = ''
+    cookie["session"]["path"] = "/"
     cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
 
 print "Content-type:text/html"
