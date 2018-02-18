@@ -40,6 +40,8 @@ if not fail:
 conn.close()
 
 print 'Content-type:text/html'
+if not fail:
+    print cookie.output()
 print
 print '<html>'
 print '<head>'
@@ -47,7 +49,7 @@ print '<title>Web Instagram</title>'
 #print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>17</p>'
+print '<p>18</p>'
 print '<p>%s %s %s</p>'%(uid,pw,repw)
 print fail
 print '</body>'
@@ -65,8 +67,7 @@ print '</html>'
 url = "/cgi-bin/index.py"
 
 print 'Content-type:text/html'
-if not fail:
-    print cookie.output()
+
 print
 print '<html>'
 print '<head>'
