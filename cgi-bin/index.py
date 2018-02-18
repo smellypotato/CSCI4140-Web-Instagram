@@ -31,7 +31,6 @@ if login:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
         print "session = " + cookie["session"].value
     except (Cookie.CookieError, KeyError):
-        #print None
         a = 1
 else:
     print cookie.output()
@@ -56,18 +55,10 @@ print '    color: white;'
 print '}'
 print '.pagination a:hover:not(.active) {background-color: #ddd;}'
 print '</style>'
-print '<p>7</p>'
+print '<p>8</p>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
-print '</body>'
-print '</html>'
-'''
-
-
-
-print ""
-
 if login:
     print '<p>Account Management</p>'
     print '<form action= "updateaccount.py" method = "post">'
@@ -93,6 +84,15 @@ else:
     print '<form action= "signup.py" method = "post">'
     print '<button>Sign Up</button>'
     print '</form>'
+print '</body>'
+print '</html>'
+'''
+
+
+
+print ""
+
+
 print '<form action= "/cgi-bin/initialize.py" method = "post">'
 print '<button>Initialize Account DB</button>'
 print '</form>'
