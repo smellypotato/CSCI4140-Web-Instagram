@@ -51,7 +51,7 @@ print '</head>'
 print '<body>'
 print '<p>Upload Complete! <a href = "index.py">Click here to go to main page.</a></p>'
 print '<p>Here is your permalink:</p>'
-print '<p><a href = %s>'%os.path.join('..',permalink) +permalink+ '</a></p>'
+print '<p><a href = %s target="_blank">'%os.path.join('..',permalink) +permalink+ '</a></p>'
 imgpath = os.path.join('..',img)
 print '<img src = %s>'%imgpath
 print '</form>'

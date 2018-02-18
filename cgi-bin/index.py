@@ -55,7 +55,7 @@ print '    color: white;'
 print '}'
 print '.pagination a:hover:not(.active) {background-color: #ddd;}'
 print '</style>'
-print '<p>4</p>'
+print '<p>5</p>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
@@ -90,12 +90,6 @@ print '</form>'
 print '<form action= "/cgi-bin/showdb.py" method = "post">'
 print '<button>Show DB</button>'
 print '</form>'
-print '</body>'
-print '</html>'
-'''
-
-
-
 conn = sqlite3.connect("image.db")
 #image db info
 cursor = conn.execute("SELECT count(*) FROM image WHERE owner = 'public' OR owner = ?", (user,))
@@ -132,9 +126,6 @@ for row in cursor:
         permalink = os.path.join('..','upload',row[1],'thumbnail',row[0])
         original = os.path.join('..','upload',row[1],row[0])
     print '<a target = "_blank" href = "%s"><img src = %s></a>'%(original,permalink)
+conn.close()
 print '</body>'
 print '</html>'
-conn.close()
-
-#executable?
-'''
