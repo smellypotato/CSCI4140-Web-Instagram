@@ -7,15 +7,6 @@ import sqlite3
 import Cookie
 import math
 
-print 'Content-type:text/html'
-print ""
-print '<html>'
-print '<head>'
-print '<title>Web Instagram</title>'
-print '</head>'
-print '</html>'
-'''
-
 cookie = ""
 cgitb.enable()
 login = False
@@ -27,6 +18,17 @@ row = cursor.fetchone()
 if (row[0] != 0):
     user = row[1]
     login = True
+conn.close()
+
+print 'Content-type:text/html'
+print ""
+print '<html>'
+print '<head>'
+print '<title>Web Instagram</title>'
+print '</head>'
+print '<body>25.5</body>'
+print '</html>'
+'''
 if not login:
     cookie = Cookie.SimpleCookie()
     cookie['session'] = ''
@@ -42,7 +44,7 @@ if login:
 else:
     print cookie.output
 print ""
-conn.close()
+
 
 
 print '<style>'
