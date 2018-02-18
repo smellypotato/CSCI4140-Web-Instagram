@@ -49,8 +49,8 @@ print '<title>Web Instagram</title>'
 #print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>18</p>'
-print '<p>%s %s %s</p>'%(uid,pw,repw)
+print '<p>19</p>'
+print '<p>%s</p>'%cookie.output()
 print fail
 print '</body>'
 print '</html>'
