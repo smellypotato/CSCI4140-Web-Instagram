@@ -8,7 +8,12 @@ import sqlite3
 import Cookie
 import math
 cgitb.enable()
-
+cookie = ""
+cgitb.enable()
+login = False
+user = "guest"
+conn = sqlite3.connect('account.db')
+httpcookie = os.environ["HTTP_COOKIE"]
 print "Content-type:text/html\r\n\r\n"
 print "<html>"
 print "<head>"
@@ -17,12 +22,7 @@ print "</head>"
 print "</html>"
 
 '''
-cookie = ""
-cgitb.enable()
-login = False
-user = "guest"
-conn = sqlite3.connect('account.db')
-httpcookie = os.environ["HTTP_COOKIE"]
+
 cursor = conn.execute("SELECT count(*), username FROM account where cookies = ?", (httpcookie,))
 row = cursor.fetchone()
 if (row[0] != 0):
