@@ -18,7 +18,8 @@ handler_class = CGIHTTPServer.CGIHTTPRequestHandler
 server_address = ("", PORT)
 handler_class.cgi_directories = ["/cgi-bin"]
 
-url = 'http://localhost:{0}/{1}'.format(PORT, script_path)
+#url = 'http://localhost:{0}/{1}'.format(PORT, script_path)
+url = script_path
 webbrowser.open_new_tab(url)
 httpd = server_class(server_address, handler_class)
 
