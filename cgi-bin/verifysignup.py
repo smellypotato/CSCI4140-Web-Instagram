@@ -12,10 +12,3 @@ cgitb.enable()
 cookie = ""
 conn = sqlite3.connect('account.db')
 form = cgi.FieldStorage()
-
-fail = False
-
-uid = form.getvalue("username")
-pw = form.getvalue("password")
-repw = form.getvalue("repassword")
-conn.close()
