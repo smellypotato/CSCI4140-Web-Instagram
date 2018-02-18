@@ -33,7 +33,7 @@ if login:
     except (Cookie.CookieError, KeyError):
         print None
 else:
-    print cookie.output ,'\r\n\r\n'
+    print cookie.output() ,'\r\n\r\n'
 conn.close()
 print "<html>"
 print "<head>"
