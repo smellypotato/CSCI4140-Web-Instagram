@@ -7,41 +7,40 @@ import os
 import sqlite3
 import Cookie
 import math
-cgitb.enable()
 cookie = ""
+cgitb.enable()
 login = False
 user = "guest"
 conn = sqlite3.connect('account.db')
 httpcookie = os.environ["HTTP_COOKIE"]
-
 cursor = conn.execute("SELECT count(*), username FROM account where cookies = ?", (httpcookie,))
 row = cursor.fetchone()
 if (row[0] != 0):
     user = row[1]
     login = True
 if not login:
-    try:
-        cookie = Cookie.SimpleCookie()
-        cookie['session'] = ''
-        cookie["session"]["path"] = "/"
-        cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
-
-print "Content-type:text/html"
+    cookie = Cookie.SimpleCookie()
+    cookie['session'] = ''
+    cookie['session']['path']= '/'
+    cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
+print 'Content-type:text/html'
 if login:
     try:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
-        print "session = " + cookie["session"].value,'\r\n'
+        print "session = " + cookie["session"].value
     except (Cookie.CookieError, KeyError):
         print None
 else:
-    print cookie.output() ,'\r\n'
-print
+    print cookie.output
+print ""
 conn.close()
-print "<html>"
-print "<head>"
-print "<title>Web Instagram</title>"
-print "</head>"
-
+'''
+print "<!DOCTYPE>"
+print ""
+print '<html>'
+print '<head>'
+print '<title>Web Instagram</title>'
+print '</head>'
 print '<style>'
 print '.pagination {'
 print '     display: inline-block;'
@@ -61,9 +60,6 @@ print '</style>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
-print '</body>'
-print '</html>'
-'''
 if login:
     print '<p>Account Management</p>'
     print '<form action= "updateaccount.py" method = "post">'
@@ -89,8 +85,6 @@ else:
     print '<form action= "signup.py" method = "post">'
     print '<button>Sign Up</button>'
     print '</form>'
-
-
 print '<form action= "/cgi-bin/initialize.py" method = "post">'
 print '<button>Initialize Account DB</button>'
 print '</form>'
@@ -133,7 +127,9 @@ for row in cursor:
         permalink = os.path.join('..','upload',row[1],'thumbnail',row[0])
         original = os.path.join('..','upload',row[1],row[0])
     print '<a target = "_blank" href = "%s"><img src = %s></a>'%(original,permalink)
-
+print '</body>'
+print '</html>'
 conn.close()
 
-#executable?'''
+#executable?
+'''
