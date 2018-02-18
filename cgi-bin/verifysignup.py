@@ -50,7 +50,7 @@ print '<title>Web Instagram</title>'
 print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>25</p>'
+print '<p>26</p>'
 print '<p>%s</p>'%cookie.output()
 print fail
 
