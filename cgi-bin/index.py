@@ -1,6 +1,6 @@
 #! /usr/bin/env python
 
-import cgi
+#import cgi
 import cgitb
 cgitb.enable()
 
