@@ -7,7 +7,7 @@ import os
 import sqlite3
 import Cookie
 import math
-cookie = ""
+'''cookie = ""
 cgitb.enable()
 login = False
 user = "guest"
@@ -33,7 +33,7 @@ else:
     print cookie.output
 conn.close()
 #use bootstrap to show image
-'''print "<!DOCTYPE>"
+print "<!DOCTYPE>"
 print ""
 print '<html>'
 print '<head>'
