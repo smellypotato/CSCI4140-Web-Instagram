@@ -21,7 +21,7 @@ if (row[0] != 0):
 if not login:
     cookie = Cookie.SimpleCookie()
     cookie['session'] = ''
-    #cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
+    cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
 print 'Content-type:text/html'
 if login:
     try:
@@ -33,7 +33,7 @@ else:
     print cookie.output
 conn.close()
 #use bootstrap to show image
-print "<!DOCTYPE>"
+'''print "<!DOCTYPE>"
 print ""
 print '<html>'
 print '<head>'
@@ -129,4 +129,4 @@ print '</body>'
 print '</html>'
 conn.close()
 
-#executable?
+#executable?'''
