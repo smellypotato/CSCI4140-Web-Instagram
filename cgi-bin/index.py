@@ -24,8 +24,17 @@ if not login:
     cookie = Cookie.SimpleCookie()
     cookie['session'] = ''
     cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
-    
-print "Content-type:text/html\r\n\r\n"
+
+print "Content-type:text/html"
+if login:
+    try:
+        cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
+        print "Session = " + cookie["session"].value+'\r\n\r\n'
+    except (Cookie.CookieError, KeyError):
+        print ,
+else:
+    print cookie.output+'\r\n\r\n'
+conn.close()
 print "<html>"
 print "<head>"
 print "<title>Web Instagram</title>"
@@ -33,8 +42,6 @@ print "</head>"
 print "</html>"
 
 '''
-
-print 'Content-type:text/html'
 if login:
     try:
         cookie = Cookie.SimpleCookie(os.environ["HTTP_COOKIE"])
