@@ -19,6 +19,11 @@ if (row[0] != 0):
     user = row[1]
     login = True
 conn.close()
+if not login:
+    cookie = Cookie.SimpleCookie()
+    cookie['session'] = ''
+    cookie['session']['path']= '/'
+    cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
 
 print 'Content-type:text/html'
 print ""
@@ -42,18 +47,14 @@ print '    color: white;'
 print '}'
 print '.pagination a:hover:not(.active) {background-color: #ddd;}'
 print '</style>'
-print '<p>4</p>'
+print '<p>5</p>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
 print '</body>'
 print '</html>'
 '''
-if not login:
-    cookie = Cookie.SimpleCookie()
-    cookie['session'] = ''
-    cookie['session']['path']= '/'
-    cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
+
 
 if login:
     try:
@@ -65,12 +66,6 @@ else:
     print cookie.output
 print ""
 
-
-
-
-print '<body>'
-print '<h2>Welcome to web instagram by Potato</h2>'
-print 'hi,', user
 if login:
     print '<p>Account Management</p>'
     print '<form action= "updateaccount.py" method = "post">'
