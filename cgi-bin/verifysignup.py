@@ -17,7 +17,15 @@ repw = form.getvalue("repassword")
 
 fail = False
 conn = sqlite3.connect('account.db')
-
+if not fail:
+    if pw != repw:
+        fail = True
+if not fail:
+    cursor = conn.cursor()
+    cursor.execute("SELECT count(*) FROM account WHERE username= ?", (uid,))
+    count = cursor.fetchone()[0]
+    if count > 0:
+        fail = True
 conn.close()
 
 print 'Content-type:text/html'
@@ -28,8 +36,9 @@ print '<title>Web Instagram</title>'
 #print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>15</p>'
+print '<p>16</p>'
 print '<p>%s %s %s</p>'%(uid,pw,repw)
+print fail
 print '</body>'
 print '</html>'
 
@@ -40,20 +49,6 @@ print '</html>'
 
 
 
-
-
-
-
-
-if not fail:
-    if pw != repw:
-        fail = True
-if not fail:
-    cursor = conn.cursor()
-    cursor.execute("SELECT count(*) FROM account WHERE username= ?", (uid,))
-    count = cursor.fetchone()[0]
-    if count > 0:
-        fail = True
 if not fail:
     expiration = datetime.datetime.now() + datetime.timedelta(days=30)
     cookie = Cookie.SimpleCookie()
