@@ -26,6 +26,17 @@ if not fail:
     count = cursor.fetchone()[0]
     if count > 0:
         fail = True
+if not fail:
+    expiration = datetime.datetime.now() + datetime.timedelta(days=30)
+    cookie = Cookie.SimpleCookie()
+    cookie["session"] = random.randint(0,1000000000)
+    cookie["session"]["path"] = "/"
+    cookie["session"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
+    cookiesession,cookieexpire = cookie.output().split(';',1)
+    garbage, cookiesession = cookiesession.split(':',1)
+    cookiesession = cookiesession.replace(" ","")
+    cursor.execute("INSERT INTO account VALUES(?,?,?,?)",(uid, pw, cookiesession, cookieexpire))
+    conn.commit()
 conn.close()
 
 print 'Content-type:text/html'
@@ -36,7 +47,7 @@ print '<title>Web Instagram</title>'
 #print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>16</p>'
+print '<p>17</p>'
 print '<p>%s %s %s</p>'%(uid,pw,repw)
 print fail
 print '</body>'
@@ -49,17 +60,7 @@ print '</html>'
 
 
 
-if not fail:
-    expiration = datetime.datetime.now() + datetime.timedelta(days=30)
-    cookie = Cookie.SimpleCookie()
-    cookie["session"] = random.randint(0,1000000000)
-    cookie["session"]["path"] = "/"
-    cookie["session"]["expires"] = expiration.strftime("%a, %d-%b-%Y %H:%M:%S PST")
-    cookiesession,cookieexpire = cookie.output().split(';',1)
-    garbage, cookiesession = cookiesession.split(':',1)
-    cookiesession = cookiesession.replace(" ","")
-    cursor.execute("INSERT INTO account VALUES(?,?,?,?)",(uid, pw, cookiesession, cookieexpire))
-    conn.commit()
+
 #url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
 url = "/cgi-bin/index.py"
 
