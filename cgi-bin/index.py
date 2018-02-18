@@ -19,13 +19,12 @@ if (row[0] != 0):
     user = row[1]
     login = True
 conn.close()
-print login
 if not login:
     cookie = Cookie.SimpleCookie()
     cookie['session'] = ''
     cookie['session']['path']= '/'
     cookie['session']['expires'] = 'Thu, 01 Jan 1970 00:00:00 PST'
-print cookie.output()
+
 print 'Content-type:text/html'
 if login:
     try:
@@ -56,7 +55,7 @@ print '    color: white;'
 print '}'
 print '.pagination a:hover:not(.active) {background-color: #ddd;}'
 print '</style>'
-print '<p>20</p>'
+print '<p>21</p>'
 print '<body>'
 print '<h2>Welcome to web instagram by Potato</h2>'
 print 'hi,', user
