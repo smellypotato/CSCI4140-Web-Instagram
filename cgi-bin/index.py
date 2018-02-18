@@ -6,7 +6,8 @@ import os
 import sqlite3
 import Cookie
 import math
-
+import sys,traceback
+sys.stderr = sys.stdout
 cookie = ""
 cgitb.enable()
 login = False
@@ -35,57 +36,61 @@ if login:
 else:
     print cookie.output()
 print ""
-print '<html>'
-print '<head>'
-print '<title>Web Instagram</title>'
-print '</head>'
-print '<style>'
-print '.pagination {'
-print '     display: inline-block;'
-print '}'
-print '.pagination a {'
-print '    color: black;'
-print '    float: left;'
-print '    padding: 8px 17px;'
-print '    text-decoration: none;'
-print '}'
-print '.pagination a.active {'
-print '    background-color: #4CAF50;'
-print '    color: white;'
-print '}'
-print '.pagination a:hover:not(.active) {background-color: #ddd;}'
-print '</style>'
-print '<p>21</p>'
-print '<body>'
-print '<h2>Welcome to web instagram by Potato</h2>'
-print 'hi,', user
-if login:
-    print '<p>Account Management</p>'
-    print '<form action= "updateaccount.py" method = "post">'
-    print '<button>Update Account</button>'
-    print '</form>'
-    print '<form action= "logout.py" method = "post">'
-    print '<button>Log Out</button>'
-    print '</form>'
-    print '<br>'
-    print '<p>Upload Photo</p>'
-    print '<form enctype="multipart/form-data" action= "upload.py" method="post">'
-    print '<p>File: <input type="file" name="file" accept="image/gif, image/jpeg, image/png"></p>'
-    print '<p>'
-    print '<input type="radio" name="mode" value = "public" checked>public'
-    print '<input type="radio" name="mode" value = "private">private'
-    print '</p>'
-    print '<p><input type="submit" value="Upload Photo"></p>'
-    print '</form>'
-else:
-    print '<form action= "signin.py" method = "post">'
-    print '<button>Sign In</button>'
-    print '</form>'
-    print '<form action= "signup.py" method = "post">'
-    print '<button>Sign Up</button>'
-    print '</form>'
-print '</body>'
-print '</html>'
+try:
+    print '<html>'
+    print '<head>'
+    print '<title>Web Instagram</title>'
+    print '</head>'
+    print '<style>'
+    print '.pagination {'
+    print '     display: inline-block;'
+    print '}'
+    print '.pagination a {'
+    print '    color: black;'
+    print '    float: left;'
+    print '    padding: 8px 17px;'
+    print '    text-decoration: none;'
+    print '}'
+    print '.pagination a.active {'
+    print '    background-color: #4CAF50;'
+    print '    color: white;'
+    print '}'
+    print '.pagination a:hover:not(.active) {background-color: #ddd;}'
+    print '</style>'
+    print '<p>22</p>'
+    print '<body>'
+    print '<h2>Welcome to web instagram by Potato</h2>'
+    print 'hi,', user
+    if login:
+        print '<p>Account Management</p>'
+        print '<form action= "updateaccount.py" method = "post">'
+        print '<button>Update Account</button>'
+        print '</form>'
+        print '<form action= "logout.py" method = "post">'
+        print '<button>Log Out</button>'
+        print '</form>'
+        print '<br>'
+        print '<p>Upload Photo</p>'
+        print '<form enctype="multipart/form-data" action= "upload.py" method="post">'
+        print '<p>File: <input type="file" name="file" accept="image/gif, image/jpeg, image/png"></p>'
+        print '<p>'
+        print '<input type="radio" name="mode" value = "public" checked>public'
+        print '<input type="radio" name="mode" value = "private">private'
+        print '</p>'
+        print '<p><input type="submit" value="Upload Photo"></p>'
+        print '</form>'
+    else:
+        print '<form action= "signin.py" method = "post">'
+        print '<button>Sign In</button>'
+        print '</form>'
+        print '<form action= "signup.py" method = "post">'
+        print '<button>Sign Up</button>'
+        print '</form>'
+except:
+    print "\n\n<PRE>"
+    traceback.print_exc()
+    print '</body>'
+    print '</html>'
 '''
 
 
