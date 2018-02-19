@@ -32,19 +32,19 @@ elif (filt == "lomo"):
     subprocess.Popen(cmd, shell = True)
     #cmd = 'convert ..\\'+ img + ' -channel R -level 33% -channel G -level 33% ..\\'+ output
 elif (filt == "lensflare"):
-    cmd = 'convert lensflare.png -resize 1000x tmp.png'
+    cmd = 'convert lensflare.png -resize 100x ' +  os.path.join('..', 'tmp.png')
     subprocess.Popen(cmd, shell = True)
-    cmd = 'composite -compose screen -gravity northwest tmp.png ' + thisimg + ' ' +output
+    cmd = 'composite -compose screen -gravity northwest ' +  os.path.join('..', 'tmp.png') + thisimg + ' ' +output
     subprocess.Popen(cmd, shell = True)
 elif (filt == "blackwhite"):
-    cmd = 'convert ' + thisimg + ' -type grayscale tmp' + output
+    cmd = 'convert ' + thisimg + ' -type grayscale ' +  os.path.join('..', 'tmp.png')
     subprocess.Popen(cmd, shell = True)
-    cmd = 'convert bwgrad.png -resize 100x100\! tmp.png'
+    cmd = 'convert bwgrad.png -resize 100x100\! ' +  os.path.join('..', 'bwtmp.png')
     subprocess.Popen(cmd, shell = True)
-    cmd = 'composite -compose softlight -gravity center tmp.png tmp' + output + ' ' + output
+    cmd = 'composite -compose softlight -gravity center ' +  os.path.join('..', 'bwtmp.png')+ ' ' + output
     subprocess.Popen(cmd, shell = True)
 elif (filt == "blur"):
-    cmd = 'convert ' + thisimg + '-blur 0x2 ' + output
+    cmd = 'convert ' + thisimg + ' -blur 0.5x2 ' + output
     subprocess.Popen(cmd, shell = True)
     #image.blur(5,5)
 #image.write(output)
@@ -58,6 +58,6 @@ print '<META HTTP-EQUIV="Refresh" CONTENT="3;URL=%s">'%url
 print '</head>'
 print '<body>'
 print '<p>Applying filter......</p>'
-print '<img src = %s>'%output#os.path.join('..',output)
+print '<img src = %s>'%os.path.join('..','..',output)
 print '</body>'
 print '</html>'
