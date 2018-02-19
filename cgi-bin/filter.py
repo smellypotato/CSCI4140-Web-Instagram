@@ -2,7 +2,6 @@
 import cgi, os
 import cgitb
 import subprocess
-
 cgitb.enable()
 form = cgi.FieldStorage()
 
@@ -23,6 +22,7 @@ if (os.path.isfile(output)):
 output = os.path.join('.', output)
 cmd=""
 thisimg = os.path.join('.',img)
+
 #image = pm.Image(img)
 if (filt == "border"):
     cmd = 'convert '+ thisimg + ' -bordercolor black -border 100x100 '+ output
@@ -32,25 +32,19 @@ elif (filt == "lomo"):
     subprocess.Popen(cmd, shell = True)
     #cmd = 'convert ..\\'+ img + ' -channel R -level 33% -channel G -level 33% ..\\'+ output
 elif (filt == "lensflare"):
-    cmd = 'convert lensflare.png -resize 200x200 tmp.png'
+    cmd = 'convert lensflare.png -resize 1000x tmp.png'
     subprocess.Popen(cmd, shell = True)
     cmd = 'composite -compose screen -gravity northwest tmp.png ' + thisimg + ' ' +output
     subprocess.Popen(cmd, shell = True)
-    #flare = pm.Image("lensflare.png")
-    #geo =str(image.size().width())+'x'+str(image.size().height())+'!'
-    #flare.resize(geo)#+str(image.size().height()))
-    #image.composite(flare,pm.GravityType.NorthWestGravity,pm.CompositeOperator.ScreenCompositeOp)
-#elif (filt == "blackwhite"):
-    #cmd =
-    #image.colorSpace(pm.ColorspaceType.GRAYColorspace)
-    #if not image.monochrome():
-    #    image.monochrome(True)
-    #bw = pm.Image("bwgrad.png")
-    #geo =str(image.size().width())+'x'+str(image.size().height())+'!'
-    #bw.resize(geo)
-    #image.composite(bw,pm.GravityType.CenterGravity,pm.CompositeOperator.SoftLightCompositeOp)
+elif (filt == "blackwhite"):
+    cmd = 'convert ' + thisimg + ' -type grayscale tmp' + output
+    subprocess.Popen(cmd, shell = True)
+    cmd = 'convert bwgrad.png -resize 100x100\! tmp.png'
+    subprocess.Popen(cmd, shell = True)
+    cmd = 'composite -compose softlight -gravity center tmp.png tmp' + output + ' ' + output
+    subprocess.Popen(cmd, shell = True)
 elif (filt == "blur"):
-    cmd = 'convert ' + thisimg + '-blur 0.5x2 ' + output
+    cmd = 'convert ' + thisimg + '-blur 0x2 ' + output
     subprocess.Popen(cmd, shell = True)
     #image.blur(5,5)
 #image.write(output)
