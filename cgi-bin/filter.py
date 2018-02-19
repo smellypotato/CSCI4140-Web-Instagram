@@ -26,21 +26,24 @@ cmd=""
 #image = pm.Image(img)
 if (filt == "border"):
     cmd = 'convert '+ img + ' -bordercolor Black -border 100x100 '+ output
+    subprocess.Popen(cmd)
     #image.borderColor("Black")
     #geo =str(int(image.size().width()*0.1))+'x'+str(int(image.size().height()*0.1))
     #image.border(geo)
 elif (filt == "lomo"):
     cmd = 'convert ' + img + ' -channel R -level 33% -channel -G -level 33% ' + output
+    subprocess.Popen(cmd)
     #cmd = 'convert ..\\'+ img + ' -channel R -level 33% -channel G -level 33% ..\\'+ output
 elif (filt == "lensflare"):
     cmd = 'convert lensflare.png -resize 200x200 tmp.png'
-
+    subprocess.Popen(cmd)
     cmd = 'composite -compose screen -gravity northwest tmp.png ' + img + ' ' +output
+    subprocess.Popen(cmd)
     #flare = pm.Image("lensflare.png")
     #geo =str(image.size().width())+'x'+str(image.size().height())+'!'
     #flare.resize(geo)#+str(image.size().height()))
     #image.composite(flare,pm.GravityType.NorthWestGravity,pm.CompositeOperator.ScreenCompositeOp)
-elif (filt == "blackwhite"):
+#elif (filt == "blackwhite"):
     #cmd =
     #image.colorSpace(pm.ColorspaceType.GRAYColorspace)
     #if not image.monochrome():
@@ -51,6 +54,7 @@ elif (filt == "blackwhite"):
     #image.composite(bw,pm.GravityType.CenterGravity,pm.CompositeOperator.SoftLightCompositeOp)
 elif (filt == "blur"):
     cmd = 'convert ' + img + '-blur 0.5x2 ' + output
+    subprocess.Popen(cmd)
     #image.blur(5,5)
 #image.write(output)
 #url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/editor.py")
