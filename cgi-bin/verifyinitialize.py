@@ -4,6 +4,7 @@ import cgitb
 import time
 import os
 import sqlite3
+cgitb.enable()
 
 form = cgi.FieldStorage()
 uid = form.getvalue("username")
