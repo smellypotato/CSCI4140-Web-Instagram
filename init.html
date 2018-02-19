@@ -1,10 +1,15 @@
 <html>
 <head>
 <title>Web Instagram</title>
-<META HTTP-EQUIV="Refresh" CONTENT=2;URL="/cgi-bin/initialize.py">
+<META HTTP-EQUIV="Refresh" CONTENT=1;URL="/cgi-bin/initialize.py">
 </head>
 <body>
-<h2>Web Instagram initialization</h2>
+<h2>Web Instagram Admin Login</h2>
+<form action = "/cgi-bin/verifyinitialize.py" method= "post">
+Admin Username: <input type="text" name="username" autofocus></ br>
+Admin Password: <input type="password" name="password"></ br>
+Admin New Password (or Retype your password if not first time login): <input type="password" name="newpassword"></>
+<input type = "submit" value = "submit">
 </form>
 </body>
 </html>

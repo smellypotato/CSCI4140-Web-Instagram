@@ -23,8 +23,8 @@ owner TEXT,
 uploadtime DATETIME DEFAULT CURRENT_TIMESTAMP);'''
 )
 conn.close()
-
-shutil.rmtree('upload')
+if os.path.exists('upload'):
+    shutil.rmtree('upload')
 
 #url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/index.py")
 url = "/cgi-bin/index.py"
