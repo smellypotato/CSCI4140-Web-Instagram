@@ -40,7 +40,7 @@ print '<input type="radio" name="filter" value = "lomo">Lomo'
 print '<input type="radio" name="filter" value = "lensflare">Lens Flare'
 print '<input type="radio" name="filter" value = "blackwhite">Black & White'
 print '<input type="radio" name="filter" value = "blur">Blur'
-print '<input type="radio" name="filter" value = "fake">fake'
+#print '<input type="radio" name="filter" value = "fake">fake'
 print '</p>'
 print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
 print '<input type = "hidden" value = "%s" name = "owner">'%owner
@@ -65,15 +65,6 @@ print '<input type = "hidden" value = "%s" name = "owner">'%owner
 print '<input type = "submit" value = "Discard" >'
 print '</form>'
 
-#debug
-conn = sqlite3.connect('image.db')
-
-cursor = conn.execute("SELECT * FROM image ORDER BY uploadtime DESC")
-for row in cursor:
-    print '<p>name: ',row[0],'</p>'
-    print '<p>owner: ',row[1],'</p>'
-    print '<p>time: ',row[2],'</p>'
-conn.close()
 print '</body>'
 print '</html>'
 

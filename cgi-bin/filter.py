@@ -20,9 +20,9 @@ if (os.path.isfile(output)):
         os.remove(img)
     os.rename(output, img)
 output = os.path.join('.', output)
-cmd=""
 thisimg = os.path.join('.',img)
-
+cmd = 'convert lensflare.png -resize 1000x ' +  os.path.join('.', 'lenstmp.png')
+subprocess.Popen(cmd, shell = True)
 #image = pm.Image(img)
 if (filt == "border"):
     cmd = 'convert '+ thisimg + ' -bordercolor black -border 100x100 '+ output
@@ -32,9 +32,9 @@ elif (filt == "lomo"):
     subprocess.Popen(cmd, shell = True)
     #cmd = 'convert ..\\'+ img + ' -channel R -level 33% -channel G -level 33% ..\\'+ output
 elif (filt == "lensflare"):
-    cmd = 'convert lensflare.png -resize 1000x ' +  os.path.join('.', 'tmp.png')
+    cmd = 'convert lensflare.png -resize 1000x ' +  os.path.join('.', 'lenstmp.png')
     subprocess.Popen(cmd, shell = True)
-    cmd = 'composite -compose screen -gravity northwest ' +  os.path.join('.', 'tmp.png') + ' ' + thisimg + ' ' +output
+    cmd = 'composite -compose screen -gravity northwest ' +  os.path.join('.', 'lenstmp.png') + ' ' + thisimg + ' ' +output
     subprocess.Popen(cmd, shell = True)
 elif (filt == "blackwhite"):
     cmd = 'convert ' + thisimg + ' -type grayscale ' +  output#os.path.join('.', 'tmp.png')
@@ -46,7 +46,7 @@ elif (filt == "blackwhite"):
 elif (filt == "fake"):
     cmd = 'convert ' + thisimg + ' -type grayscale tmp.png'
     subprocess.Popen(cmd, shell = True)
-    cmd = 'convert bwgrad.png -resize 500x500\! bwtmp.png'
+    cmd = 'convert bwgrad.png -resize 500x500! bwtmp.png'
     subprocess.Popen(cmd, shell = True)
     cmd = 'composite -compose softlight -gravity center bwtmp.png tmp.png ' + output
     subprocess.Popen(cmd, shell = True)
@@ -60,10 +60,9 @@ print
 print '<html>'
 print '<head>'
 print '<title>Web Instagram</title>'
-print '<META HTTP-EQUIV="Refresh" CONTENT="3;URL=%s">'%url
+print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
 print '<p>Applying filter......</p>'
-print '<img src = %s>'%os.path.join('..','..',output)
 print '</body>'
 print '</html>'

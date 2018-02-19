@@ -28,12 +28,6 @@ print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
 print '<p>Undo......</p>'
-#print '<img src = %s>'%displayimg
-print '<form action ="editor.py" method = "post">'
-print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
-print '<input type = "hidden" value = "%s" name = "owner">'%owner
-print '<input type = "submit" value = "Apply Filter">'
-print '</form>'
 print '</body>'
 print '</html>'
 
