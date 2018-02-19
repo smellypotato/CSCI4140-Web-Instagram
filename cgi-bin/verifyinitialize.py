@@ -43,10 +43,12 @@ if not login:
 print '</head>'
 print '<body>'
 if login:
-    print '<h2>System Initialization</h2>'
-    print '<p>Important: all data would be deleted.</p>'
-    print '<button onclick="initialize.py">Please GO Ahead</button>'
-    print '<button onclick="index.py">Go Back</button>''
+    print '<form action= "initialize.py" method = "post">'
+    print '<button>Please GO Ahead</button>'
+    print '</form>'
+    print '<form action= "index.py" method = "post">'
+    print '<button>Go Back</button>'
+    print '</form>'
 else:
     print '<p>Admin login failed! Returning to main page......'
 print '</body>'

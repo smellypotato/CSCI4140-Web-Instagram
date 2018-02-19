@@ -84,12 +84,6 @@ else:
     print '<form action= "signup.py" method = "post">'
     print '<button>Sign Up</button>'
     print '</form>'
-print '<form action= "/cgi-bin/initialize.py" method = "post">'
-print '<button>Initialize Account DB</button>'
-print '</form>'
-print '<form action= "/cgi-bin/showdb.py" method = "post">'
-print '<button>Show DB</button>'
-print '</form>'
 conn = sqlite3.connect("image.db")
 #image db info
 cursor = conn.execute("SELECT count(*) FROM image WHERE owner = 'public' OR owner = ?", (user,))
