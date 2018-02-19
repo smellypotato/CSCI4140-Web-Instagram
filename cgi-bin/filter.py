@@ -2,8 +2,6 @@
 import cgi, os
 import cgitb
 import subprocess
-#import re
-#import PythonMagick as pm
 
 cgitb.enable()
 form = cgi.FieldStorage()
@@ -29,18 +27,15 @@ thisimg = os.path.join('.',img)
 if (filt == "border"):
     cmd = 'convert '+ thisimg + ' -bordercolor black -border 100x100 '+ output
     subprocess.Popen(cmd, shell = True)
-    #image.borderColor("Black")
-    #geo =str(int(image.size().width()*0.1))+'x'+str(int(image.size().height()*0.1))
-    #image.border(geo)
 elif (filt == "lomo"):
     cmd = 'convert ' + thisimg + ' -channel R -level 33% -channel G -level 33% ' + output
-    subprocess.Popen(cmd)
+    subprocess.Popen(cmd, shell = True)
     #cmd = 'convert ..\\'+ img + ' -channel R -level 33% -channel G -level 33% ..\\'+ output
 elif (filt == "lensflare"):
     cmd = 'convert lensflare.png -resize 200x200 tmp.png'
-    subprocess.Popen(cmd)
+    subprocess.Popen(cmd, shell = True)
     cmd = 'composite -compose screen -gravity northwest tmp.png ' + thisimg + ' ' +output
-    subprocess.Popen(cmd)
+    subprocess.Popen(cmd, shell = True)
     #flare = pm.Image("lensflare.png")
     #geo =str(image.size().width())+'x'+str(image.size().height())+'!'
     #flare.resize(geo)#+str(image.size().height()))
@@ -56,10 +51,9 @@ elif (filt == "lensflare"):
     #image.composite(bw,pm.GravityType.CenterGravity,pm.CompositeOperator.SoftLightCompositeOp)
 elif (filt == "blur"):
     cmd = 'convert ' + thisimg + '-blur 0.5x2 ' + output
-    subprocess.Popen(cmd)
+    subprocess.Popen(cmd, shell = True)
     #image.blur(5,5)
 #image.write(output)
-#url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/editor.py")
 url = '/cgi-bin/editor.py?imgname='+img+'&owner='+owner
 print 'Content-Type: text/html'
 print
@@ -69,14 +63,7 @@ print '<title>Web Instagram</title>'
 print '<META HTTP-EQUIV="Refresh" CONTENT="3;URL=%s">'%url
 print '</head>'
 print '<body>'
-print '<p>Applying filter......%s %s %s</p>'%(img, thisimg, output)
-print '<img src = %s>'%thisimg#os.path.join('..',output)
-#print '<form action ="editor.py" method = "post">'
-#print '<input type = "hidden" value = "%s" name = "imgname">'%img
-#print '<input type = "hidden" value = "%s" name = "owner">'%owner
-#print '<input type = "submit" value = "Apply Filter">'
-#print '</form>'
+print '<p>Applying filter......</p>'
+print '<img src = %s>'%output#os.path.join('..',output)
 print '</body>'
 print '</html>'
-
-#executable?

@@ -2,8 +2,8 @@
 import cgi, os
 import cgitb
 import sqlite3
-#import PythonMagick as pm
 import shutil
+import subprocess
 cgitb.enable()
 form = cgi.FieldStorage()
 
@@ -30,15 +30,13 @@ tnoutput =os.path.join(tnoutputdir,os.path.basename(img))
 #image = pm.Image(img)
 #image.resize("200x200")
 #image.write(tnoutput)
-shutil.copy(img,tnoutput)
-
+cmd = "convert " + os.path.join('.',img) +" -resize 200x200 " + tnoutput
+subprocess.Popen(cmd, shell = True)
 
 conn = sqlite3.connect('image.db')
 conn.execute("INSERT INTO image(name ,owner) VALUES(?, ?)",(os.path.basename(img), owner))
 conn.commit()
 conn.close()
-
-url = '/cgi-bin/index.py'
 
 permalink = img
 print 'Content-Type: text/html'
@@ -46,7 +44,6 @@ print
 print '<html>'
 print '<head>'
 print '<title>Web Instagram</title>'
-#print '<META HTTP-EQUIV="Refresh" CONTENT="1;URL=%s">'%url
 print '</head>'
 print '<body>'
 print '<p>Upload Complete! <a href = "index.py">Click here to go to main page.</a></p>'

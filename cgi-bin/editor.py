@@ -9,10 +9,7 @@ form = cgi.FieldStorage()
 
 imgname = form.getvalue("imgname")
 owner = form.getvalue("owner")
-conn = sqlite3.connect('image.db')
-#conn.execute("INSERT INTO image(name ,owner) VALUES(?, ?)",(img, owner))
-#conn.commit()
-#conn.close()
+
 imgdir = os.path.dirname(imgname)
 outputdir = os.path.join(imgdir,"filter")
 filteroutput =os.path.join(outputdir,os.path.basename(imgname))
@@ -38,7 +35,6 @@ print '<img src = %s>'%displayimg
 
 print '<form action ="filter.py" method = "post">'
 print '<p>'
-print '<input type="radio" name="filter" value = "none">none'
 print '<input type="radio" name="filter" value = "border" checked>Border'
 print '<input type="radio" name="filter" value = "lomo">Lomo'
 print '<input type="radio" name="filter" value = "lensflare">Lens Flare'
@@ -69,11 +65,14 @@ print '<input type = "submit" value = "Discard" >'
 print '</form>'
 
 #debug
+conn = sqlite3.connect('image.db')
+
 cursor = conn.execute("SELECT * FROM image ORDER BY uploadtime DESC")
 for row in cursor:
     print '<p>name: ',row[0],'</p>'
     print '<p>owner: ',row[1],'</p>'
     print '<p>time: ',row[2],'</p>'
+conn.close()
 print '</body>'
 print '</html>'
 
