@@ -21,7 +21,7 @@ if (os.path.isfile(output)):
     os.rename(output, img)
 output = os.path.join('.', output)
 thisimg = os.path.join('.',img)
-cmd = 'convert lensflare.png -resize 1000x ' +  os.path.join('.', 'lenstmp.png')
+cmd = 'convert lensflare.png -resize 500x ' +  os.path.join('.', 'lenstmp.png')
 subprocess.Popen(cmd, shell = True)
 #image = pm.Image(img)
 if (filt == "border"):
