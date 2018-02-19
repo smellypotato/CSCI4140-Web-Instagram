@@ -32,21 +32,20 @@ elif (filt == "lomo"):
     subprocess.Popen(cmd, shell = True)
     #cmd = 'convert ..\\'+ img + ' -channel R -level 33% -channel G -level 33% ..\\'+ output
 elif (filt == "lensflare"):
-    cmd = 'convert lensflare.png -resize 100x ' +  os.path.join('..', 'tmp.png')
+    cmd = 'convert lensflare.png -resize 100x ' +  os.path.join('.', 'tmp.png')
     subprocess.Popen(cmd, shell = True)
-    cmd = 'composite -compose screen -gravity northwest ' +  os.path.join('..', 'tmp.png') + thisimg + ' ' +output
+    cmd = 'composite -compose screen -gravity northwest ' +  os.path.join('.', 'tmp.png ') + thisimg + ' ' +output
     subprocess.Popen(cmd, shell = True)
 elif (filt == "blackwhite"):
-    cmd = 'convert ' + thisimg + ' -type grayscale ' +  os.path.join('..', 'tmp.png')
+    cmd = 'convert ' + thisimg + ' -type grayscale ' +  os.path.join('.', 'tmp.png')
     subprocess.Popen(cmd, shell = True)
-    cmd = 'convert bwgrad.png -resize 100x100\! ' +  os.path.join('..', 'bwtmp.png')
+    cmd = 'convert bwgrad.png -resize 100x100\! ' +  os.path.join('.', 'bwtmp.png')
     subprocess.Popen(cmd, shell = True)
-    cmd = 'composite -compose softlight -gravity center ' +  os.path.join('..', 'bwtmp.png')+ ' ' + output
+    cmd = 'composite -compose softlight -gravity center ' +  os.path.join('.', 'bwtmp.png')+ ' ' + output
     subprocess.Popen(cmd, shell = True)
 elif (filt == "blur"):
     cmd = 'convert ' + thisimg + ' -blur 0.5x2 ' + output
     subprocess.Popen(cmd, shell = True)
-    #image.blur(5,5)
 #image.write(output)
 url = '/cgi-bin/editor.py?imgname='+img+'&owner='+owner
 print 'Content-Type: text/html'
