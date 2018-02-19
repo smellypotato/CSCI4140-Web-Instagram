@@ -40,6 +40,7 @@ print '<input type="radio" name="filter" value = "lomo">Lomo'
 print '<input type="radio" name="filter" value = "lensflare">Lens Flare'
 print '<input type="radio" name="filter" value = "blackwhite">Black & White'
 print '<input type="radio" name="filter" value = "blur">Blur'
+print '<input type="radio" name="filter" value = "fake">fake'
 print '</p>'
 print '<input type = "hidden" value = "%s" name = "imgname">'%imgname
 print '<input type = "hidden" value = "%s" name = "owner">'%owner
