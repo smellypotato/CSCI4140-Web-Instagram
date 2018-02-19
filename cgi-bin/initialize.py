@@ -2,7 +2,7 @@
 
 import sqlite3
 import shutil
-
+import os
 conn = sqlite3.connect('account.db')
 cursor = conn.execute('''DROP TABLE IF EXISTS account''')
 cursor = conn.execute('''
