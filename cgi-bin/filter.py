@@ -27,7 +27,7 @@ cmd=""
 thisimg = os.path.join('..',img)
 #image = pm.Image(img)
 if (filt == "border"):
-    cmd = 'convert '+ thisimg + ' -bordercolor Black -border 100x100 '+ output
+    cmd = 'convert '+ thisimg + ' -bordercolor Black -border 100x100 '+ thisimg
     subprocess.Popen(cmd)
     #image.borderColor("Black")
     #geo =str(int(image.size().width()*0.1))+'x'+str(int(image.size().height()*0.1))
