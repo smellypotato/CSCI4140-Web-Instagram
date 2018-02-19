@@ -22,13 +22,13 @@ if (os.path.isfile(output)):
     if os.path.isfile(img):
         os.remove(img)
     os.rename(output, img)
-output = os.path.join('..', output)
+output = os.path.join('.', output)
 cmd=""
-thisimg = os.path.join('..',img)
+thisimg = os.path.join('.',img)
 #image = pm.Image(img)
 if (filt == "border"):
     #cmd = 'convert r\''+ thisimg + '\' -bordercolor Black -border 100x100 \\'+ output
-    cmd = 'ls'
+    cmd = 'ls -al', thisimg
     subprocess.Popen(cmd)
     #image.borderColor("Black")
     #geo =str(int(image.size().width()*0.1))+'x'+str(int(image.size().height()*0.1))
