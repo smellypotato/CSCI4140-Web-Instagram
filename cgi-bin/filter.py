@@ -70,7 +70,7 @@ print '<META HTTP-EQUIV="Refresh" CONTENT="3;URL=%s">'%url
 print '</head>'
 print '<body>'
 print '<p>Applying filter......%s %s %s</p>'%(img, thisimg, output)
-#print '<img src = %s>'%os.path.join('..',output)
+print '<img src = %s>'%thisimg#os.path.join('..',output)
 #print '<form action ="editor.py" method = "post">'
 #print '<input type = "hidden" value = "%s" name = "imgname">'%img
 #print '<input type = "hidden" value = "%s" name = "owner">'%owner

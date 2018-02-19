@@ -38,8 +38,9 @@ print '<img src = %s>'%displayimg
 
 print '<form action ="filter.py" method = "post">'
 print '<p>'
+print '<input type="radio" name="filter" value = "none">none'
 print '<input type="radio" name="filter" value = "border" checked>Border'
-#print '<input type="radio" name="filter" value = "lomo">Lomo'
+print '<input type="radio" name="filter" value = "lomo">Lomo'
 print '<input type="radio" name="filter" value = "lensflare">Lens Flare'
 print '<input type="radio" name="filter" value = "blackwhite">Black & White'
 print '<input type="radio" name="filter" value = "blur">Blur'
