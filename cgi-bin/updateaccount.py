@@ -12,7 +12,7 @@ print '''
 <body>
 <h2>Web Instagram Update Account</h2>
 <form action = "verifyupdate.py" method= "post">
-Original Password: <input type="password" name="oldpassword"></ br>
+Original Password: <input type="password" name="oldpassword" autofocus></ br>
 New Password: <input type="password" name="newpassword"></ br>
 Retype New Password: <input type="password" name="renewpassword"></>
 <input type = "submit" value = "submit">

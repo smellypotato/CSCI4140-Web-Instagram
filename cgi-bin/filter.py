@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import cgi, os
 import cgitb
-#import subprocess
+import subprocess
 #import re
 import PythonMagick as pm
 
@@ -23,30 +23,36 @@ if (os.path.isfile(output)):
         os.remove(img)
     os.rename(output, img)
 cmd=""
-image = pm.Image(img)
+#image = pm.Image(img)
 if (filt == "border"):
-    #cmd = 'convert '+ img + ' -bordercolor Black -border 100x100 '+ output
-    image.borderColor("Black")
-    geo =str(int(image.size().width()*0.1))+'x'+str(int(image.size().height()*0.1))
-    image.border(geo)
-#elif (filt == "lomo"):
+    cmd = 'convert '+ img + ' -bordercolor Black -border 100x100 '+ output
+    #image.borderColor("Black")
+    #geo =str(int(image.size().width()*0.1))+'x'+str(int(image.size().height()*0.1))
+    #image.border(geo)
+elif (filt == "lomo"):
+    cmd = 'convert ' + img + ' -channel R -level 33% -channel -G -level 33% ' + output
     #cmd = 'convert ..\\'+ img + ' -channel R -level 33% -channel G -level 33% ..\\'+ output
 elif (filt == "lensflare"):
-    flare = pm.Image("lensflare.png")
-    geo =str(image.size().width())+'x'+str(image.size().height())+'!'
-    flare.resize(geo)#+str(image.size().height()))
-    image.composite(flare,pm.GravityType.NorthWestGravity,pm.CompositeOperator.ScreenCompositeOp)
+    cmd = 'convert lensflare.png -resize 200x200 tmp.png'
+
+    cmd = 'composite -compose screen -gravity northwest tmp.png ' + img + ' ' +output
+    #flare = pm.Image("lensflare.png")
+    #geo =str(image.size().width())+'x'+str(image.size().height())+'!'
+    #flare.resize(geo)#+str(image.size().height()))
+    #image.composite(flare,pm.GravityType.NorthWestGravity,pm.CompositeOperator.ScreenCompositeOp)
 elif (filt == "blackwhite"):
-    image.colorSpace(pm.ColorspaceType.GRAYColorspace)
-    if not image.monochrome():
-        image.monochrome(True)
-    bw = pm.Image("bwgrad.png")
-    geo =str(image.size().width())+'x'+str(image.size().height())+'!'
-    bw.resize(geo)
-    image.composite(bw,pm.GravityType.CenterGravity,pm.CompositeOperator.SoftLightCompositeOp)
+    #cmd =
+    #image.colorSpace(pm.ColorspaceType.GRAYColorspace)
+    #if not image.monochrome():
+    #    image.monochrome(True)
+    #bw = pm.Image("bwgrad.png")
+    #geo =str(image.size().width())+'x'+str(image.size().height())+'!'
+    #bw.resize(geo)
+    #image.composite(bw,pm.GravityType.CenterGravity,pm.CompositeOperator.SoftLightCompositeOp)
 elif (filt == "blur"):
-    image.blur(5,5)
-image.write(output)
+    cmd = 'convert ' + img + '-blur 0.5x2 ' + output
+    #image.blur(5,5)
+#image.write(output)
 #url = 'http://localhost:{0}/{1}'.format(8080, "cgi-bin/editor.py")
 url = '/cgi-bin/editor.py?imgname='+img+'&owner='+owner
 print 'Content-Type: text/html'
