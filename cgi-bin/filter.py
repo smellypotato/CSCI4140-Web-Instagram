@@ -3,7 +3,7 @@ import cgi, os
 import cgitb
 import subprocess
 #import re
-import PythonMagick as pm
+#import PythonMagick as pm
 
 cgitb.enable()
 form = cgi.FieldStorage()
