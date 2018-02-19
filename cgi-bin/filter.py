@@ -27,13 +27,14 @@ cmd=""
 thisimg = os.path.join('..',img)
 #image = pm.Image(img)
 if (filt == "border"):
-    cmd = 'convert '+ thisimg + ' -bordercolor Black -border 100x100 '+ thisimg
+    #cmd = 'convert r\''+ thisimg + '\' -bordercolor Black -border 100x100 \\'+ output
+    cmd = 'ls'
     subprocess.Popen(cmd)
     #image.borderColor("Black")
     #geo =str(int(image.size().width()*0.1))+'x'+str(int(image.size().height()*0.1))
     #image.border(geo)
 elif (filt == "lomo"):
-    cmd = 'convert ' + thisimg + ' -channel R -level 33% -channel -G -level 33% ' + output
+    cmd = 'convert ' + thisimg + ' -channel R -level 33% -channel G -level 33% ' + output
     subprocess.Popen(cmd)
     #cmd = 'convert ..\\'+ img + ' -channel R -level 33% -channel G -level 33% ..\\'+ output
 elif (filt == "lensflare"):
