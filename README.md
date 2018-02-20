@@ -45,11 +45,11 @@ Sign up will automatically sign in if success
 
 
 ## Good/Bad
-Overall bad, i don't deserve any bonus
-Initialization cannot implement with authorization due to unknown reason, anyone with the url can initialize the system
-In editor mode, effect of lensflare filter is visible with image dimension bigger than 250x250. Please compare it with original image if the effect is not clear. I don't have time to learn how to get values from subprocess
-In editor mode, effect of black & white filter only change the image to grayscale without the gradient filter. It works when I use pythonmagick but doesn't work with Imagemagick.
-Update account allows update with old password
-Account creation allows any kind of input (spaces, number, alphabets, special symbols, any length..)
+Overall bad, i don't deserve any bonus  
+Initialization cannot implement with authorization due to unknown reason, anyone with the url can initialize the system  
+In editor mode, effect of lensflare filter is visible with image dimension bigger than 250x250. Please compare it with original image if the effect is not clear. I don't have time to learn how to get values from subprocess. Also, if the first time lensflares is not applied to the image, please apply the filter again and it should work  
+In editor mode, effect of black & white filter only change the image to grayscale without the gradient filter. It works when I use pythonmagick but doesn't work with Imagemagick.  
+Update account allows update with old password  
+Account creation allows any kind of input (spaces, number, alphabets, special symbols, any length..)  
 
 I have spent 2 weeks working on only this assignment and I only have 2 more days before holiday end so I can't do any more improvements
