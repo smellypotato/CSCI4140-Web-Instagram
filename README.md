@@ -25,18 +25,18 @@ stores information of images with permalink
 stores information of user accounts
 
 ## Implementation procedure
-Spent around 3 days to configure openshift
-Built the application on local host with Python 2.7
-Chose sqlite3 as database package
-Implement access control and session management function
-Implement file upload function
-Tried to use pythonmagick api
-Implement editor and filter function (except lomo filter)
-Realise it cannot create lomo filter
-Implement pagination function
-Implement initialization function
-Deployed the application on Openshift
-Replace pythonmagick with ImageMagick
+Spent around 3 days to configure openshift  
+Built the application on local host with Python 2.7  
+Chose sqlite3 as database package  
+Implement access control and session management function  
+Implement file upload function  
+Tried to use pythonmagick api  
+Implement editor and filter function (except lomo filter)  
+Realise it cannot create lomo filter  
+Implement pagination function  
+Implement initialization function  
+Deployed the application on Openshift  
+Replace pythonmagick with ImageMagick  
 
 ## Functionality Remark
 An image can add as many filter as you like, but it can only undo once.
