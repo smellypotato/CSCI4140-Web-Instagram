@@ -41,8 +41,10 @@ Replace pythonmagick with ImageMagick
 ## Functionality Remark
 An image can add as many filter as you like, but it can only undo once.
 Inilialization will remove all images and reset all databases
-Sign up will automatically sign in if success
-
+Sign up will automatically sign in if success  
+Please execute the following command to install ImageMagick if rebuild on openshift is needed:  
+oc rsh <pod>  
+wget https://www.imagemagick.org/download/ImageMagick.tar.gz && tar xvzf ImageMagick.tar.gz && cd ImageMagick-7.0.7-23/ && ./configure --prefix=/opt/app-root && make install  
 
 ## Good/Bad
 Overall bad, i don't deserve any bonus  
